@@ -33,7 +33,7 @@ Route::post('logout', [AuthController::class, 'logout'])->name('logout')->middle
 Route::middleware([LogArticleView::class])->group(function () {
     Route::resource('article', ArticleController::class);
     //Route::resource('article', ArticleController::class)->middleware('log.article.view');
-
+ 
 });
 
 Route::get('/api/article', [\App\Http\Controllers\API\ArticleController::class, 'index'])->name('apiarticle.index');

@@ -63,5 +63,25 @@
         "name": "Grigoriy",
         "email": "gr@mail.ru",
         "password": "gr@mail.ru"
+    },
+    {
+        "name": "val",
+        "email": "masha@mail.ru",
+        "password": "masha@mail.ru"
+    },
+    {
+        "name": "gt",
+        "email": "gt@mail.ru",
+        "password": "gt@mail.ru"
+    },
+    {
+        "name": "moderator",
+        "email": "gt@mail.ru",
+        "password": "gt@mail.ru"
+    },
+    {
+        "name": "vale",
+        "email": "vale@mail.ru",
+        "password": "vale@mail.ru"
     }
 ]

@@ -81,7 +81,7 @@
     </main>
 
     <footer class="bg-dark text-white text-center py-3 mt-4">
-        <p class="mb-0">&copy; Петров Иван Иванович гр. 444</p>
+        <p class="mb-0">&copy; Филипьева Валерия Романовна 231-323</p>
        
     </footer>
 

@@ -22,6 +22,6 @@ class RoleMiddleware
             return $next($request);
         }
 
-        abort(403, 'Нет доступа');
+        abort(code: 403, 'Нет доступа');
     }
 }

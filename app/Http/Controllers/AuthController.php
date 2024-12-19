@@ -38,7 +38,7 @@ class AuthController extends Controller
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
-            'role' => User::ROLE_MODERATOR, // Роль по умолчанию
+            'role' => User::ROLE_USER, // Роль по умолчанию
         ]);
 
         return redirect()->route('login.form')->with('success', 'Регистрация успешно завершена.');
