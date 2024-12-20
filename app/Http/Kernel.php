@@ -1,5 +1,15 @@
 <?php
+// Этот файл определяет основную логику обработки HTTP-запросов в Laravel приложении. Он расширяет класс Illuminate\Foundation\Http\Kernel, который предоставляет базовую структуру для обработки запросов.
 
+// Основные компоненты
+// $middleware:
+// Определяет стек middleware для всех HTTP-запросов.
+// Включает как стандартные Laravel middleware, так и пользовательские.
+// $middlewareGroups:
+// Группирует middleware по назначению (например, 'web', 'api').
+// Каждая группа применяется к определенным маршрутам или всем приложению.
+// $routeMiddleware:
+// Определяет отдельные middleware, которые можно применять к конкретным маршрутам.
 namespace App\Http;
 
 use Illuminate\Foundation\Http\Kernel as HttpKernel;

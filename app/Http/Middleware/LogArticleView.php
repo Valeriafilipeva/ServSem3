@@ -14,6 +14,7 @@ class LogArticleView
         
         if ($request->is('article/*')) {
             ArticleView::create(['url' => $request->fullUrl()]);
+            // Если URL соответствует этому шаблону, создается новый запись в таблице ArticleView с полем url, содержащим полный URL запроса.
         }
 
         return $next($request);

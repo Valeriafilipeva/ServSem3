@@ -31,6 +31,7 @@ class CommentController extends Controller
         }
 
         VeryLongJob::dispatch($comment);
+        // dispatch() - метод, используемый для запуска задачи асинхронно.
 
         return redirect()->back()->with('success', 'Комментарий отправлен на модерацию.');
     }

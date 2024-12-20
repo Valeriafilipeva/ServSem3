@@ -23,6 +23,7 @@ class AuthController extends Controller
         ]);
 
         $data = $request->only(['name', 'email', 'password']);
+        // Этот код получает только необходимые поля запроса, ограничения имен, электронной почты и пароля.
 
         $jsonFilePath = 'users.json';
         if (file_exists($jsonFilePath)) {
@@ -30,15 +31,20 @@ class AuthController extends Controller
         } else {
             $jsonData = [];
         }
+    // Проверяется наличие файла.
+    // Если файл существует, из него считываются данные.
+    // Если файла нет, создайте пустой массив.
 
         $jsonData[] = $data;
 
         file_put_contents($jsonFilePath, json_encode($jsonData, JSON_PRETTY_PRINT));
+        // Создается новый файл или перезаписывается существующий с отформатированными JSON-данными.
         User::create([
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
             'role' => User::ROLE_USER, // Роль по умолчанию
+            // Использована хеш-функция для хранения файлов.
         ]);
 
         return redirect()->route('login.form')->with('success', 'Регистрация успешно завершена.');

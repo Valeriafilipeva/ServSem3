@@ -31,9 +31,12 @@ class RouteServiceProvider extends ServiceProvider
      */
     protected function mapWebRoutes()
     {
-        Route::middleware(['web', 'log.article.view']) // Здесь подключается ваш посредник
+        Route::middleware(['web', 'log.article.view']) // Здесь подключается посредник
+            // Это стандартный middleware в Laravel, который обеспечивает защиту от CSRF атак и проверяет наличие сессии.
              ->namespace($this->namespace)
              ->group(base_path('routes/web.php'));
+                // Метод group() группирует все последующие определения маршрутов.
+                // base_path('routes/web.php') указывает путь к файлу маршрутов веб-приложения.
     }
 
     /**

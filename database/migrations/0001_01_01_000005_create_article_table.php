@@ -20,6 +20,8 @@ class CreateArticleTable extends Migration
 
     public function down()
     {
+        // Метод down() определяет действия, которые должны быть
+        //  выполнены при откате миграции. В данном случае, он удаляет таблицу 'article'.
         Schema::dropIfExists('article');
     }
 }

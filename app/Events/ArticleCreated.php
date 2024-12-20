@@ -14,7 +14,9 @@ use Illuminate\Queue\SerializesModels;
 class ArticleCreated implements ShouldBroadcast
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
-
+    // Dispatchable: Позволяет диспетчеру событий правильно обрабатывать и распространять события.
+    // InteractsWithSockets: предоставляет методы для работы с WebSocket-соединениями.
+    // SerializesModels: сериализует соответствующие модели перед отправкой событий.
     public $article;
 
     /**
@@ -31,6 +33,8 @@ class ArticleCreated implements ShouldBroadcast
     public function broadcastOn()
     {
         return new Channel('articles');
+        // Этот метод определяет канал, на который будет отправлено событие.
+        //  В данном случае все события будут публиковаться на канале Articles.
     }
 
     /**
@@ -42,6 +46,8 @@ class ArticleCreated implements ShouldBroadcast
             'id' => $this->article->id,
             'name' => $this->article->name,
             'created_at' => $this->article->created_at->toDateTimeString(),
+            // Преобразует заданное строковое представление даты и времени в эквивалентное значение даты и времени.
         ];
+        // Этот метод определяет данные, которые будут отправлены вместе по событию
     }
 }

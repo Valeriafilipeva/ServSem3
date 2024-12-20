@@ -20,12 +20,13 @@ class ArticleController extends Controller
         //$articles = Article::paginate(10);
         
         $articles = Cache::remember('articles_page_' . request('page', 1), 60, function () {
-            return Article::paginate(10);
+            return Article::paginate(perPage: 10);
         });
        
         if(auth()->user()->role == 'moderator'){
            
             return view('article.add', compact('articles'));
+            //  это функция PHP, которая создает массив с ключом articles
         }
         return view('article.index', compact('articles'));
     }
@@ -47,12 +48,16 @@ class ArticleController extends Controller
 
         $article =  Article::create($request->all());
         Cache::forget('articles_page_' . request('page', 1));
+        // Первый аргумент 'page'указывает, что мы ищем значение параметра запроса с именем «страница».
+        // Второй аргумент 1имеет значение по умолчанию, если параметр «страница» не найден в запросе.
 
         $users = User::all();
         foreach ($users as $user) {
             $user->notify(new ArticleCreatedNotification($article));
+            //  метод уведомляет пользователя о создании новых статей.
         }
         broadcast(new ArticleCreated($article));
+        // Метод broadcast()отправляет это событие всем подключенным клиентам.
 
 
         return redirect()->route('article.index')->with('success', 'Новость создана.');
@@ -65,9 +70,11 @@ class ArticleController extends Controller
         $articles = Article::findOrFail($id);
         if(auth()->user()->role == 'user'){
             $articles->comments = $articles->comments->where('approved', true);
+            // Присваивает эти отфильтрованные комментарии к свойству comments статьи
         }
         
         auth()->user()->unreadNotifications
+        //  получает все непрочитанные уведомления ( auth()->user()->unreadNotifications).
         ->where('data.id', $id)
         ->markAsRead();
          

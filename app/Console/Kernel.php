@@ -3,7 +3,7 @@ namespace App\Console;
 
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
-use App\Console\Commands\SendStatisticsEmail; // Подключаем вашу команду
+use App\Console\Commands\SendStatisticsEmail; // Подключаем команду
 
 class Kernel extends ConsoleKernel
 {
@@ -13,7 +13,8 @@ class Kernel extends ConsoleKernel
      * @var array
      */
     protected $commands = [
-        SendStatisticsEmail::class,  // Регистрация вашей команды
+        SendStatisticsEmail::class,  // Регистрация команды
+        // Здесь регистрируются все команды, которые должны быть доступны через консоль
     ];
 
     /**
@@ -24,7 +25,7 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        // Пример расписания вашей команды:
+        // Пример расписания команды:
         $schedule->command('email:send-statistics')->daily();
     }
 
